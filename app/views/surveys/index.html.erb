@@ -1,0 +1,10 @@
+<h1> Welcome To Survey Gorilla</h1>
+
+<%= button_to "Create New Survey", new_survey_path, :method => :get %> <br><br>
+
+<div id="survey_list">
+
+  <% @surveys.each do |survey| %>
+    <%= link_to "#{survey.title}", survey  %> <br><br>
+  <% end %>
+</div>

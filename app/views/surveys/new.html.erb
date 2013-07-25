@@ -1,0 +1,25 @@
+<% if @survey.errors.any? %>
+  <% @survey.errors.full_messages.each do |error| %>
+    <%= error %>
+  <% end %>
+<% end %>
+<h1>Create a New Survey</h1>
+
+<div id="survey_form">
+  <%= form_for @survey do |f| %>                   
+    <%= f.label :title, 'Title' %>
+    <%= f.text_field :title, id: 'title_field', class: 'text_field' %>
+    <br>
+    <%= button_tag "Add Question", id: "add_question"%><br><br>
+    <%= f.fields_for :questions do |q| %>
+        <%= q.label :content, "Content" %>
+        <%= q.text_field :content  %>
+    <% end %> 
+    <%= f.submit "Create Survey" %>
+  <% end %>
+</div>
+
+<div id="question_template">
+  <input type="hidden" name="survey[questions_attributes][][content]" size="30" type="text">
+</div>
+
